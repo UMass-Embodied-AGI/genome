@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>GNSVR</title>
+<link rel="stylesheet" href="./GNSVR_files/font.css">
+<link rel="stylesheet" href="./GNSVR_files/style.css">
+
+<style type="text/css">
+	#myvalignContainer1O { position:relative }
+	#myvalignContainer1I { position:absolute; top:50%; height:10em; margin-top:-5em }
+</style><style type="text/css">
+	#myvalignContainer2 { line-height:4em }
+</style></head>
+
+
+
+
+<body data-new-gr-c-s-check-loaded="14.1034.0" data-gr-ext-installed="">
+
+<!-- Title -->
+<div class="container">
+
+
+<span class="title"><span class="gnsvr">GNSVR</span>: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules</span>
+<span class="venue"><p style="margin:20px">Under Submission</p></span>
+
+<table align="center" border="0" width="1100" class="authors">
+	<tbody><tr>
+  <!-- authors -->
+	</tr></tbody>
+</table>
+<table align="center" border="0" width="1000" class="affiliations">
+<tbody>
+	<tr><td class="affliation" align="center">
+    <!-- affliations -->
+  </td>
+  </tr>
+</tbody></table>
+
+<!-- <br>
+<br>
+<table align="center"><tbody><tr>
+<td><center><img src="./GNSVR_files/teaser_v4.png" width="1000"></center></td>
+</tr>
+<tr>
+<td>
+<table border="0" width="1050">
+</table></td>
+</tr>
+</tbody></table>
+<br> -->
+
+
+
+<!-- Abstract -->
+<div class="section">
+<span class="section-title">Abstract </span>
+<span class="abstract">
+<p>Recent works have shown that Large Language Models (LLMs) could empower traditional neuro-symbolic models via programming capabilities to translate languages into module descriptions, thus achieving strong visual reasoning results while maintaining the model’s transparency and efficiency. However, these models usually exhaustively generate the entire code snippet given each new instance of a task, which is extremely ineffective. On the contrary, human beings gradually acquire knowledge that can be reused and grow into more profound skills for fast generalization to new tasks since we are an infant. Inspired by this, we propose generative neuro-symbolic visual reasoning by growing and reusing modules. Specifically, our model consists of three unique stages, module initialization, module generation, and module execution. First, given a vision-language task, we adopt LLMs to examine whether we could reuse and grow over established modules to handle this new task. If not, we initialize a new module needed by the task and specify the inputs and outputs of this new module. After that, the new module is created by querying LLMs to generate corresponding code snippets that match the requirements. In order to get a better sense of the new module's ability, we treat few-shot training examples as test cases to see if our new module could pass these cases. If yes, the new module is added to the module library for future reuse. Finally, we evaluate the performance of our model on the testing set by executing the parsed programs with the newly made visual modules to get the results. We find the proposed GNSVR model possesses several advantages. First, it performs competitively on standard tasks like visual question answering and referring expression comprehension; Second, the visual modules learned from one task can be seamlessly transferred to new tasks; Last but not least, it is able to adapt to new visual reasoning tasks by observing a few training examples and reusing modules.</p>
+</span>
+
+</div>
+
+
+
+<div class="section">
+<span class="section-title"> Framework </span>
+<br><br>
+<table align="center"><tbody>
+<tr><td><center><img id="stage123" src="./GNSVR_files/678_stage123.jpg" width="1000"></center>
+<center>
+<div style="width: 75%;">
+<span class="caption2" >
+<p>
+The framework of our GNSVR, which contains three stages, module initialization, module
+generation, and module execution. In stage 1, we feed the questions and the signature of the existing
+modules to the LLM and ask it to identify whether we can handle the query within the operations of
+the existing modules. If not, we ask the LLM to generate the signature of the new module (i.e. the
+input and output) and predict the reasoning steps to handle the query task. In stage 2, we feed the
+module signature and the testing cases to the LLM and ask the LLM to implement the module and
+test its pass rate on the training examples. We only accept the modules that successfully handle the
+query. In stage 3, we first use the LLM to parse the query into symbolic operations and then execute
+these operations on the test images with the help of the scalable module library. We take VQA
+as an example and such a framework can also be expanded to other tasks like referring expression
+comprehension and Raven.</p>
+</span>
+</div>
+</center>
+</td></tr>
+</tbody></table>
+</div>
+
+<script>
+  $(function() {
+      $("#stage123").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/678_stage123.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/678_stage123.jpg");
+          }
+      );
+  });
+</script>
+
+
+
+
+<div class="section">
+<span class="section-title">Examples</span>
+<br><br>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="gqa" src="./GNSVR_files/9_gqa.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
+    <b><p align="center" style="margin:-10px">(a) GQA</p></b>
+  </td>
+</tr>
+</tbody></table>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="refcoco" src="./GNSVR_files/10_refcoco.png" width="800">
+    <b><p align="center" style="margin:-10px">(b) RefCOCO</p></b>
+    </td>
+</tr>
+</tbody></table>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="imgedit" src="./GNSVR_files/11_imgedit.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
+    <b><p align="center" style="margin:-10px">(c) Image Editing</p></b>
+  </td>
+</tr>
+</tbody></table>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="okdet" src="./GNSVR_files/12_okdet.png" width="800">
+    <b><p align="center" style="margin:-10px">(d) Object Tagging</p></b>
+  </td>
+</tr>
+</tbody></table>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="raven" src="./GNSVR_files/13_raven.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
+    <b><p align="center" style="margin:-10px">(e) RAVEN</p></b>
+  </td>
+</tr>
+</tbody></table>
+<br>
+
+<table align="center"><tbody>
+<tr><td><img id="mewl" src="./GNSVR_files/14_mewl.png" width="800">
+    <b><p align="center" style="margin:-10px">(f) MEWL</p></b>
+  </td>
+</tr>
+</tbody></table>
+<br>
+
+
+<script>
+  $(function() {
+      $("#gqa").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/9_gqa.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/9_gqa.png");
+          }
+      );
+  });
+  $(function() {
+      $("#refcoco").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/10_refcoco.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/10_refcoco.png");
+          }
+      );
+  });
+  $(function() {
+      $("#imgedit").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/11_imgedit.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/11_imgedit.png");
+          }
+      );
+  });
+  $(function() {
+      $("#okdet").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/12_okdet.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/12_okdet.png");
+          }
+      );
+  });
+  $(function() {
+      $("#raven").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/13_raven.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/13_raven.png");
+          }
+      );
+  });
+  $(function() {
+      $("#mewl").hover(
+          function() {
+              $(this).attr("src", "./GNSVR_files/14_mewl.gif");
+          },
+          function() {
+              $(this).attr("src", "./GNSVR_files/14_mewl.png");
+          }
+      );
+  });
+</script>
+
+</div>
+
+<p>&nbsp;</p>
+<!-- end .container --></div>
+
+<div><div style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;"><div style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;"></div></div></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<deepl-input-controller><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div><div class="dl-input-translation-container svelte-ju4595"><div></div></div></div></template></deepl-input-controller></body></html>

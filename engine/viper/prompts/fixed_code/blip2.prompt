@@ -1,3 +1,0 @@
-
-    image_patch = ImagePatch(image)
-    return image_patch.query_image(question)
