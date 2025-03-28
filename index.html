@@ -1,233 +1,220 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>GNSVR</title>
-<link rel="stylesheet" href="./GNSVR_files/font.css">
-<link rel="stylesheet" href="./GNSVR_files/style.css">
-
-<style type="text/css">
-	#myvalignContainer1O { position:relative }
-	#myvalignContainer1I { position:absolute; top:50%; height:10em; margin-top:-5em }
-</style><style type="text/css">
-	#myvalignContainer2 { line-height:4em }
-</style></head>
+<html class="wf-opensans-n4-active wf-opensans-n6-active wf-opensans-n7-active wf-opensans-n8-active wf-lato-n1-inactive wf-lato-i1-inactive wf-lato-n3-inactive wf-lato-i3-inactive wf-lato-n4-inactive wf-lato-i4-inactive wf-lato-n7-inactive wf-lato-i7-inactive wf-lato-n9-inactive wf-lato-i9-inactive wf-montserrat-n1-inactive wf-montserrat-i1-inactive wf-montserrat-n2-inactive wf-montserrat-i2-inactive wf-montserrat-n3-inactive wf-montserrat-i3-inactive wf-montserrat-n4-inactive wf-montserrat-i4-inactive wf-montserrat-n5-inactive wf-montserrat-i5-inactive wf-montserrat-n6-inactive wf-montserrat-i6-inactive wf-montserrat-n7-inactive wf-montserrat-i7-inactive wf-montserrat-n8-inactive wf-montserrat-i8-inactive wf-montserrat-n9-inactive wf-montserrat-i9-inactive wf-ubuntu-n3-inactive wf-ubuntu-i3-inactive wf-ubuntu-n4-inactive wf-ubuntu-i4-inactive wf-ubuntu-n5-inactive wf-ubuntu-i5-inactive wf-ubuntu-n7-inactive wf-ubuntu-i7-inactive wf-opensans-n3-inactive wf-opensans-i3-inactive wf-opensans-i4-inactive wf-opensans-i6-inactive wf-opensans-i7-inactive wf-opensans-i8-inactive wf-changaone-n4-inactive wf-changaone-i4-inactive wf-varelaround-n4-inactive wf-bungeeshade-n4-inactive wf-roboto-n3-inactive wf-roboto-n4-inactive wf-roboto-n5-inactive wf-bungeeoutline-n4-inactive wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta content="./GENOME_files/gnsvr_v4.png" property="og:image">
+  <meta content="GENOME: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules" property="twitter:title">
+  <meta content="GENOME: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules." property="twitter:description">
+  <meta content="./GENOME_files/gnsvr_v4.png" property="twitter:image">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="google-site-verification" content="sdz4d86QkTWaWHiWkS9mtiln38Bu0wirf94l-z1MkhQ">
 
 
+  <title>GENOME: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-87HN038KJT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-87HN038KJT');
+  </script>
+
+  <link href="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/" rel="preconnect">
+  <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="anonymous">
+  <!-- <script src="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/webfont.js.下载" type="text/javascript"></script> -->
+  <link rel="stylesheet" href="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/css(1)" media="all"><script type="text/javascript">WebFont.load({ google: { families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic", "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Changa One:400,400italic", "Varela Round:400", "Bungee Shade:regular", "Roboto:300,regular,500", "Bungee Outline:regular"] } });</script>
+  <link href="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/style.css" rel="stylesheet" type="text/css">
+
+  <link href="https://instruct-nerf2nerf.github.io/data/icons/wand_black.svg" rel="icon" media="(prefers-color-scheme: light)">
+  <link href="https://instruct-nerf2nerf.github.io/data/icons/wand_white.svg" rel="icon" media="(prefers-color-scheme: dark)">
+
+  <link rel="stylesheet" href="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/font-awesome.min.css">
+</head>
+
+<body>
 
 
-<body data-new-gr-c-s-check-loaded="14.1034.0" data-gr-ext-installed="">
+  <div class="section">
+    <div class="container">
+      <div class="title-row">
+        <h1 class="title">
+                  <a style="color:#2a9d8f;">G</a><a style="color:#8AB17D;">E</a><a style="color:#e9c46a">N</a><a
+            style="color:#f4a261">O</a><a style="color:#e76f51">M</a><a style="color:#f55742">E</a>:
+        <a style="color:#2a9d8f;">G</a>enerativ<a style="color:#8AB17D;">E</a> <a style="color:#e9c46a">N</a>euro-Symb<a style="color:#f4a261">O</a>lic Visual Reasoning by Growing and Reusing <a style="color:#e76f51">M</a>odul<a style="color:#f55742">E</a>s</h1>
+      </div>
+      <!-- fill in author -->
+      <div class="base-row author-row">
+        <div class="base-col author-col">
+          <a href="https://zfchenunique.github.io" target="_blank" class="author-text">
+            Zhenfang Chen<sup>1,*</sup>
+          </a>
+        </div>
+        <div class="base-col author-col">
+          <a href="https://threesr.github.io/" target="_blank" class="author-text">
+            Rui Sun<sup>2,*</sup>
+          </a>
+        </div>
+        <div class="base-col author-col">
+          <a href="https://github.com/heaplax" target="_blank" class="author-text">
+            Wenjun Liu<sup>3,*</sup>
+          </a>
+        </div>
+        <div class="base-col author-col">
+          <a href="https://evelinehong.github.io" target="_blank" class="author-text">
+            Yining Hong<sup>4</sup>
+            <span class="superscript"></span>
+          </a>
+        </div>
+        <div class="base-col author-col">
+          <a href="https://people.csail.mit.edu/ganchuang/" target="_blank" class="author-text">
+            Chuang Gan<sup>1, 5</sup>
+          </a>
+        </div>
+      </div>
 
-<!-- Title -->
-<div class="container">
+      <div class="" style="align-items: center;">
+        <h1 class="link-text">
+        <p class="ex1">
+        <span><sup>1</sup> MIT-IBM Watson AI Lab</span> &nbsp &nbsp &nbsp
+        <span><sup>2</sup> Columbia University</span> &nbsp &nbsp &nbsp
+        <span><sup>3</sup> Tsinghua University</span> &nbsp &nbsp &nbsp
+        <span><sup>4</sup> UCLA</span> &nbsp &nbsp &nbsp
+        <span><sup>5</sup> Umass Amherst</span><br /> &nbsp &nbsp &nbsp
+        <span><sup>*</sup> (Equal Contributions)</span><br /> &nbsp &nbsp &nbsp
+        <br>
+        </p>
+        </h1>
+      </div>
 
+      <div class="link-labels base-row">
+        <!-- fill in links -->
+        <div class="base-col icon-col"><a href="https://arxiv.org/abs/2311.04901" target="_blank" class="link-block"><img src="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/5cab99df4998decfbf9e218e_paper-01.png" alt="paper" sizes="(max-width: 479px) 12vw, (max-width: 767px) 7vw, (max-width: 991px) 41.8515625px, 56.6953125px" srcset="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01-p-500.png 500w, https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01.png 672w" class="icon-img"></a></div>
+        <div class="base-col icon-col"><a href="https://github.com/UMass-Foundation-Model/genome.git" class="link-block"><img src="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/5cae3b53b42ebb3dd4175a82_68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67.png" alt="paper" class="icon-img github-img-icon"></a></div>
+        <div class="base-col icon-col"><a href="https://connecthkuhk-my.sharepoint.com/:u:/g/personal/u3004417_connect_hku_hk/Ebu-rQbAO7NBoaYLsyB9mZwB262sJauR5YLqag8guhbdtw?e=vrieHW" target="_blank" class="link-block"><img src="./Instruct-NeRF2NeRF_ Editing 3D Scenes with Instructions_files/5e7136849ee3b0a0c6a95151_database.svg" alt="paper" class="icon-img data-img-icon"></a></div>
+      </div>
+      <div class="link-labels base-row">
+        <div class="base-col icon-col">
+          <strong class="link-labels-text">Paper</strong>
+        </div>
+        <div class="base-col icon-col">
+          <strong class="link-labels-text">Code</strong>
+        </div>
+        <div class="base-col icon-col">
+          <strong class="link-labels-text">Data</strong>
+        </div>
+      </div>
 
-<span class="title"><span class="gnsvr">GNSVR</span>: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules</span>
-<span class="venue"><p style="margin:20px">Under Submission</p></span>
+      <h2 class="section-header">Overview</h2>
+      <div class="paragraph">
+        <p>
+          Recent works have shown that Large Language Models (LLMs) could empower traditional neuro-symbolic models via programming capabilities to translate languages into module descriptions, thus achieving strong visual reasoning results while maintaining the model’s transparency and efficiency. However, these models usually exhaustively generate the entire code snippet given each new instance of a task, which is extremely ineffective. On the contrary, human beings gradually acquire knowledge that can be reused and grow into more profound skills for fast generalization to new tasks since we are an infant. Inspired by this, we propose generative neuro-symbolic visual reasoning by growing and reusing modules. Specifically, our model consists of three unique stages, module initialization, module generation, and module execution. First, given a vision-language task, we adopt LLMs to examine whether we could reuse and grow over established modules to handle this new task. If not, we initialize a new module needed by the task and specify the inputs and outputs of this new module. After that, the new module is created by querying LLMs to generate corresponding code snippets that match the requirements. In order to get a better sense of the new module's ability, we treat few-shot training examples as test cases to see if our new module could pass these cases. If yes, the new module is added to the module library for future reuse. Finally, we evaluate the performance of our model on the testing set by executing the parsed programs with the newly made visual modules to get the results. We find the proposed GENOME model possesses several advantages. First, it performs competitively on standard tasks like visual question answering and referring expression comprehension; Second, the visual modules learned from one task can be seamlessly transferred to new tasks; Last but not least, it is able to adapt to new visual reasoning tasks by observing a few training examples and reusing modules.
+        </p>
+      </div>
 
-<table align="center" border="0" width="1100" class="authors">
-	<tbody><tr>
-  <!-- authors -->
-	</tr></tbody>
-</table>
-<table align="center" border="0" width="1000" class="affiliations">
-<tbody>
-	<tr><td class="affliation" align="center">
-    <!-- affliations -->
-  </td>
-  </tr>
-</tbody></table>
+      <h2 class="section-header">How it works</h2>
+      <video id="main-video" muted="" controls="" playsinline="" loop="">
+        <source id="mp4" src="GENOME_files/gnsvr_v4.mp4" type="video/mp4">
+      </video>
+       <!--
+      <div class="paragraph">
 
-<!-- <br>
-<br>
-<table align="center"><tbody><tr>
-<td><center><img src="./GNSVR_files/teaser_v4.png" width="1000"></center></td>
-</tr>
-<tr>
-<td>
-<table border="0" width="1050">
-</table></td>
-</tr>
-</tbody></table>
-<br> -->
+        <img id="stage123" src="./GENOME_files/gnsvr_v4.png" width="900">
+        <center>
+        <div style="width: 75%;">
+        <p>
+          GENOME contains three stages, module initialization, module generation, and module execution to grow and reuse modules.
+        </p>
+        </div>
+        </center>
+        <p></p>
+      	</div>
+	-->
 
+      <h2 class="section-header">Results</h2>
+      <div class="section">
+        
+        <table align="center"><tbody>
+        <tr><td><img id="gqa" src="./GENOME_files/9_gqa.png" width="900">&nbsp;&nbsp;&nbsp;&nbsp;
+            <b><p align="center" style="margin:-10px">(a) Applying GENOME for <a style="color:#e76f51">Visual Question Answering</a>.</p></b>
+          </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        <table align="center"><tbody>
+        <tr><td><img id="refcoco" src="./GENOME_files/10_refcoco.png" width="900">
+            <b><p align="center" style="margin:-10px">(b) Applying GENOME for <a style="color:#e76f51">Referring Expression Comprehension</a>.</p></b>
+            </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        <table align="center"><tbody>
+        <tr><td><img id="imgedit" src="./GENOME_files/11_imgedit.png" width="900">&nbsp;&nbsp;&nbsp;&nbsp;
+            <b><p align="center" style="margin:-10px">(c) Applying GENOME for <a style="color:#e76f51">Image Editing</a>.</p></b>
+          </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        <table align="center"><tbody>
+        <tr><td><img id="okdet" src="./GENOME_files/12_okdet.png" width="900">
+            <b><p align="center" style="margin:-10px">(d)  Applying GENOME for <a style="color:#e76f51">Knowledge-based Object Tagging</a>.</p></b>
+          </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        <table align="center"><tbody>
+        <tr><td><img id="raven" src="./GENOME_files/13_raven.png" width="900">&nbsp;&nbsp;&nbsp;&nbsp;
+            <b><p align="center" style="margin:-10px">(e)  Applying GENOME for <a style="color:#e76f51">Raven's Progressive Matrices</a>.</p></b>
+          </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        <table align="center"><tbody>
+        <tr><td><img id="mewl" src="./GENOME_files/14_mewl.png" width="900">
+            <b><p align="center" style="margin:-10px">(f) Applying GENOME for <a style="color:#e76f51">Few-shot Multimodal Word Learning</a>.</p></b>
+          </td>
+        </tr>
+        </tbody></table>
+        <br>
+        
+        </div>
 
-
-<!-- Abstract -->
-<div class="section">
-<span class="section-title">Abstract </span>
-<span class="abstract">
-<p>Recent works have shown that Large Language Models (LLMs) could empower traditional neuro-symbolic models via programming capabilities to translate languages into module descriptions, thus achieving strong visual reasoning results while maintaining the model’s transparency and efficiency. However, these models usually exhaustively generate the entire code snippet given each new instance of a task, which is extremely ineffective. On the contrary, human beings gradually acquire knowledge that can be reused and grow into more profound skills for fast generalization to new tasks since we are an infant. Inspired by this, we propose generative neuro-symbolic visual reasoning by growing and reusing modules. Specifically, our model consists of three unique stages, module initialization, module generation, and module execution. First, given a vision-language task, we adopt LLMs to examine whether we could reuse and grow over established modules to handle this new task. If not, we initialize a new module needed by the task and specify the inputs and outputs of this new module. After that, the new module is created by querying LLMs to generate corresponding code snippets that match the requirements. In order to get a better sense of the new module's ability, we treat few-shot training examples as test cases to see if our new module could pass these cases. If yes, the new module is added to the module library for future reuse. Finally, we evaluate the performance of our model on the testing set by executing the parsed programs with the newly made visual modules to get the results. We find the proposed GNSVR model possesses several advantages. First, it performs competitively on standard tasks like visual question answering and referring expression comprehension; Second, the visual modules learned from one task can be seamlessly transferred to new tasks; Last but not least, it is able to adapt to new visual reasoning tasks by observing a few training examples and reusing modules.</p>
-</span>
-
-</div>
-
-
-
-<div class="section">
-<span class="section-title"> Framework </span>
-<br><br>
-<table align="center"><tbody>
-<tr><td><center><img id="stage123" src="./GNSVR_files/678_stage123.jpg" width="1000"></center>
-<center>
-<div style="width: 75%;">
-<span class="caption2" >
-<p>
-The framework of our GNSVR, which contains three stages, module initialization, module
-generation, and module execution. In stage 1, we feed the questions and the signature of the existing
-modules to the LLM and ask it to identify whether we can handle the query within the operations of
-the existing modules. If not, we ask the LLM to generate the signature of the new module (i.e. the
-input and output) and predict the reasoning steps to handle the query task. In stage 2, we feed the
-module signature and the testing cases to the LLM and ask the LLM to implement the module and
-test its pass rate on the training examples. We only accept the modules that successfully handle the
-query. In stage 3, we first use the LLM to parse the query into symbolic operations and then execute
-these operations on the test images with the help of the scalable module library. We take VQA
-as an example and such a framework can also be expanded to other tasks like referring expression
-comprehension and Raven.</p>
-</span>
-</div>
-</center>
-</td></tr>
-</tbody></table>
-</div>
+      <div class="citation add-top-padding">
+        <h1 id="abstract"> Citation </h1>
+        <p> If you use this work or find it helpful, please consider citing: (bibtex) </p>
+        <!-- fill in Citation -->
+        <pre id="codecell0">@inproceedings{gnsvr2023,
+        &nbsp;author = {Chen, Zhenfang and Sun, Rui and Liu, Wenjun and Hong, Yining and Gan, Chuang},
+        &nbsp;title = {GENOME: Generative Neuro-Symbolic Visual Reasoning by Growing and Reusing Modules},
+        &nbsp;journal = {arXiv},
+        &nbsp;year = {2023},
+        } </pre>
+      </div>
+    </div>
+  </div>
 
 <script>
   $(function() {
       $("#stage123").hover(
           function() {
-              $(this).attr("src", "./GNSVR_files/678_stage123.gif");
+              $(this).attr("src", "./GENOME_files/gnsvr_v4.gif");
           },
           function() {
-              $(this).attr("src", "./GNSVR_files/678_stage123.jpg");
+              $(this).attr("src", "./GENOME_files/gnsvr_v4.png");
           }
       );
   });
 </script>
 
-
-
-
-<div class="section">
-<span class="section-title">Examples</span>
-<br><br>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="gqa" src="./GNSVR_files/9_gqa.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
-    <b><p align="center" style="margin:-10px">(a) GQA</p></b>
-  </td>
-</tr>
-</tbody></table>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="refcoco" src="./GNSVR_files/10_refcoco.png" width="800">
-    <b><p align="center" style="margin:-10px">(b) RefCOCO</p></b>
-    </td>
-</tr>
-</tbody></table>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="imgedit" src="./GNSVR_files/11_imgedit.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
-    <b><p align="center" style="margin:-10px">(c) Image Editing</p></b>
-  </td>
-</tr>
-</tbody></table>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="okdet" src="./GNSVR_files/12_okdet.png" width="800">
-    <b><p align="center" style="margin:-10px">(d) Object Tagging</p></b>
-  </td>
-</tr>
-</tbody></table>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="raven" src="./GNSVR_files/13_raven.png" width="800">&nbsp;&nbsp;&nbsp;&nbsp;
-    <b><p align="center" style="margin:-10px">(e) RAVEN</p></b>
-  </td>
-</tr>
-</tbody></table>
-<br>
-
-<table align="center"><tbody>
-<tr><td><img id="mewl" src="./GNSVR_files/14_mewl.png" width="800">
-    <b><p align="center" style="margin:-10px">(f) MEWL</p></b>
-  </td>
-</tr>
-</tbody></table>
-<br>
-
-
-<script>
-  $(function() {
-      $("#gqa").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/9_gqa.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/9_gqa.png");
-          }
-      );
-  });
-  $(function() {
-      $("#refcoco").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/10_refcoco.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/10_refcoco.png");
-          }
-      );
-  });
-  $(function() {
-      $("#imgedit").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/11_imgedit.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/11_imgedit.png");
-          }
-      );
-  });
-  $(function() {
-      $("#okdet").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/12_okdet.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/12_okdet.png");
-          }
-      );
-  });
-  $(function() {
-      $("#raven").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/13_raven.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/13_raven.png");
-          }
-      );
-  });
-  $(function() {
-      $("#mewl").hover(
-          function() {
-              $(this).attr("src", "./GNSVR_files/14_mewl.gif");
-          },
-          function() {
-              $(this).attr("src", "./GNSVR_files/14_mewl.png");
-          }
-      );
-  });
-</script>
-
-</div>
-
-<p>&nbsp;</p>
-<!-- end .container --></div>
-
-<div><div style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;"><div style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;"></div></div></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 <deepl-input-controller><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div><div class="dl-input-translation-container svelte-ju4595"><div></div></div></div></template></deepl-input-controller></body></html>
