@@ -1,7 +1,0 @@
-ipdb==0.13.9
-face-detection==0.2.2
-augly==1.0.0
-diffusers==0.14.0
-tenacity==8.2.2
-scikit-image
-accelerate==0.18.0
