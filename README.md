@@ -1,6 +1,6 @@
 # GENOME: GenerativE Neuro-symbOlic visual reasoning by growing and reusing ModulEs
 
-[ [Project Page](https://vis-www.cs.umass.edu/genome/) | [Arxiv Paper](https://arxiv.org/abs/2311.04901) ]
+[ [Project Page](https://umass-embodied-agi.github.io/genome/) | [Arxiv Paper](https://arxiv.org/abs/2311.04901) ]
 
 ![teaser](assets/teaser_v4.png)
 
