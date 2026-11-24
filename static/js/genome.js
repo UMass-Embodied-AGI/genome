@@ -40,10 +40,13 @@
   }
 
 
+  window.__genomeBoost = 0;
   /* ---------- hero: rotating double helix ---------- */
   var cv = $('#helix');
   if (cv && cv.getContext) {
     var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), t0 = performance.now();
+    var hT = 0, hLast = performance.now();
+    function helixTime(now) { var dt = Math.min(0.05, (now - hLast) / 1000); hLast = now; hT += dt * (1 + window.__genomeBoost * 7); window.__genomeBoost *= 0.965; return hT; }
     function size() { var r = cv.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
     function css(v) { return getComputedStyle(root).getPropertyValue(v).trim(); }
     function mix(a, b, f) {
@@ -52,7 +55,7 @@
       return 'rgb(' + r + ',' + g + ',' + bl + ')';
     }
     function draw(now) {
-      var t = reduce ? 0 : (now - t0) / 1000, stops = [css('--g1'), css('--g3'), css('--g5'), css('--g6')];
+      var t = reduce ? 0 : helixTime(now), stops = [css('--g1'), css('--g3'), css('--g5'), css('--g6')];
       ctx.clearRect(0, 0, W, H);
       var n = 64, strands = [[], []], amp = Math.min(H * 0.34, 150), cy = H * 0.46, dark = root.getAttribute('data-theme') === 'dark';
       for (var i = 0; i < n; i++) {
@@ -82,13 +85,62 @@
 
   /* ---------- hero ticker ---------- */
   var TICK = [
-    ['library', 'LOC &middot; VQA &middot; CROP &middot; COUNT'],
+    ['library', 'LOC &middot; VQA &middot; CROP &middot; EVAL'],
     ['initialize', 'can existing modules compare two colors? <b>no</b>'],
     ['generate', 'writing <b>COMPARE_COLOR</b>, checking it on training examples'],
     ['reuse', '<b>COMPARE_COLOR</b> called on new questions and new tasks']
   ], ti = 0, flPh = $('#flPh'), flMsg = $('#flMsg');
   function tickNext() { flPh.textContent = TICK[ti][0]; flMsg.innerHTML = TICK[ti][1]; ti = (ti + 1) % TICK.length; }
   if (flPh) { tickNext(); if (!reduce) setInterval(tickNext, 3200); }
+
+
+  /* ---------- hero logo: grow modules (idle drift, click burst, hover spin) ---------- */
+  var mc = $('#mods'), mx = mc && mc.getContext('2d'), logoEl = $('#heroLogo'), layer = $('#chipLayer'), mparts = [];
+  var MODS = ['COMPARE_COLOR', 'COMPARE_MATERIAL', 'COMPARE_ATTRIBUTE', 'LOC', 'VQA', 'CROP', 'EVAL', 'RESULT'];
+  var grown = 0;
+  function msize() { var r = mc.parentNode.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2); mc.width = r.width * d; mc.height = r.height * d; mx.setTransform(d, 0, 0, d, 0, 0); }
+  function morigin() { var h = mc.parentNode.getBoundingClientRect(), l = logoEl.getBoundingClientRect(); return { x: l.left - h.left + l.width / 2, y: l.top - h.top + l.height / 2 }; }
+  function gcol() { var v = ['--g1', '--g2', '--g3', '--g4', '--g5', '--g6'][Math.floor(Math.random() * 6)]; return getComputedStyle(root).getPropertyValue(v).trim(); }
+  function mspawn(n, burst) {
+    var o = morigin();
+    for (var i = 0; i < n; i++) {
+      var a = burst ? Math.random() * Math.PI * 2 : -Math.PI / 2 + (Math.random() - 0.5) * 2.2, sp = burst ? 1.6 + Math.random() * 4.6 : 0.25 + Math.random() * 0.7;
+      mparts.push({ x: o.x + (Math.random() - 0.5) * 50, y: o.y + (Math.random() - 0.5) * 50, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.12,
+        s: 3 + Math.random() * (burst ? 6 : 4), life: 1, decay: 0.005 + Math.random() * (burst ? 0.016 : 0.008), c: gcol() });
+    }
+  }
+  function mtick() {
+    mx.clearRect(0, 0, mc.width, mc.height);
+    if (Math.random() < 0.18) mspawn(1, false);
+    for (var i = mparts.length - 1; i >= 0; i--) {
+      var p = mparts[i];
+      p.x += p.vx; p.y += p.vy; p.vy -= 0.008; p.vx *= 0.99; p.rot += p.vr; p.life -= p.decay;
+      if (p.life <= 0) { mparts.splice(i, 1); continue; }
+      mx.save(); mx.translate(p.x, p.y); mx.rotate(p.rot); mx.globalAlpha = p.life * 0.85;
+      mx.fillStyle = p.c; mx.shadowColor = p.c; mx.shadowBlur = 10;
+      var s = p.s; mx.beginPath();
+      if (mx.roundRect) mx.roundRect(-s, -s * 0.55, 2 * s, 1.1 * s, s * 0.3); else mx.rect(-s, -s * 0.55, 2 * s, 1.1 * s);
+      mx.fill(); mx.restore();
+    }
+    requestAnimationFrame(mtick);
+  }
+  function chipOut(name) {
+    var o = morigin(), c = document.createElement('span'), a = -Math.PI / 2 + (Math.random() - 0.5) * 2.4, d = 90 + Math.random() * 70;
+    c.className = 'fly-chip'; c.textContent = '+ ' + name;
+    c.style.left = o.x + 'px'; c.style.top = o.y + 'px';
+    c.style.setProperty('--dx', Math.cos(a) * d * 1.6 + 'px'); c.style.setProperty('--dy', Math.sin(a) * d + 'px');
+    layer.appendChild(c); setTimeout(function () { c.remove(); }, 1700);
+  }
+  if (mc && mx && logoEl && !reduce) {
+    msize(); window.addEventListener('resize', msize); requestAnimationFrame(mtick);
+    logoEl.addEventListener('click', function () {
+      mspawn(60, true); window.__genomeBoost = 1;
+      logoEl.classList.remove('grow'); void logoEl.offsetWidth; logoEl.classList.add('grow');
+      chipOut(MODS[grown % MODS.length]); grown++;
+      if (flPh) { flPh.textContent = 'library'; flMsg.innerHTML = 'module <b>' + MODS[(grown - 1) % MODS.length] + '</b> ready for reuse'; }
+    });
+    setTimeout(function () { mspawn(36, true); }, 700);
+  }
 
   /* ---------- stats count-up ---------- */
   function countUp(n) {
